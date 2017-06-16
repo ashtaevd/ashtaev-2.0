@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Ashtaev 2.0</title>
+	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:200,300,400,500" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/slick-theme.css"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+	<header>
+		<!-- <h1><a href="../index.html">Daniil Ashtaev</a></h1> -->
+		<h1><a href=""><span id="eng-name">Daniil Ashtaev</span><span id="rus-name">Даниил Аштаев</span></a></h1>
+		<nav class="invisible">
+			<ul class="nav"> 
+				<li class="work-button">work</li>
+				<li class="archive-button">archive</li>
+				<li class="about-button">about</li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="wrapper">
+
+		<div class="intro">
+				<p>Greetings,</p>
+				<p>An intradisciplinary designer, I prodvide services in the vast realm of design and its subsidiary fields.</p> <!-- tributaries -->
+				<p>And as far as my work ⟶</p>
+				<!-- <p>As an intradisciplinary designer, I prodvide services in identity, book design, interactive design, exhibition design, photography and many other subsidiary&nbsp;directions.</p> -->
+		</div>
+
+		<section class="gallery">
+
+			<!-- <div class="first-slide">
+				<p>Greetings,</p>
+				<p>An intradisciplinary designer, I prodvide services in the vast realm of design and its subsidiary fields.</p>
+				<p>And as far as my work ⟶</p>
+				<p>As an intradisciplinary designer, I prodvide services in identity, book design, interactive design, exhibition design, photography and many other subsidiary&nbsp;directions.</p>
+			</div> -->
+		</section>
+
+		<section class="work">
+			<div class="work-content">
+
+				<h2>Projects I've made:</h2>
+
+				<div class="construction-message">
+					<p>under construction</p>
+				</div>
+
+				<div class="portfolio-message">
+					<p>In the meantime, please refer to my <a href="http://ashtaev.com/portfolio">portfoilo</a></p>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="archive">
+			<div class="archive-content">
+
+				<h2>Previous appearances of this website:</h2>
+
+				<div class="archive-item">
+					<p>Ashtaev 1.0</p>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="about">
+			<div class="about-content">
+
+				<div class="about-column">
+				<p> I have many things to say,&nbsp;but...</p>
+				</div>
+
+				<div class="about-column">
+				<p>Born in Ulan-Ude  and raised in Moscow, I now reside in New York, where I study and&nbsp;work.</p><p> I am a fresh graduate of The Cooper Union, where I have learned to embrace design not limited to graphics&nbsp;alone. My work ranges from flat to physical, from written words to chopped&nbsp;wood.</p>
+				</div>
+
+				<div class="about-column">
+				<p>As of today, I have 1.8 years  of professional experience in identity, infographics, animation, illustration and so on and so&nbsp;forth.</p><p> Print and&nbsp;digital. World and&nbsp;web.</p><p> Please, write to: ashtaevd@gmail.com</p><p> Farewell!</p>
+				</div>
+
+			</div>
+		</section>
+
+	</div>
+
+	<footer>
+		<p>© Daniil Ashtaev, forever and always<p>
+	</footer>
+
+	<script type="text/javascript" src="js/slick.min.js"></script>
+	<script>
+
+		var workObj = 
+			{ "projects": [
+					{"name":"The Inquisitive Identity",
+					"photo":"../website 2.0/img/identity2.jpg",
+					"info": "Project Info",
+					"images":[]
+					},
+					{"name":"Lake Baikal: The Lore of the Land",
+					"photo":"../website 2.0/img/baikal-show-1.jpg",
+					"info": "Project Info",
+					"images":[]
+					},
+					{"name":"Imperishable US Constitution",
+					"photo":"../website 2.0/img/us-constitution-fireproof.jpg",
+					"info": "Project Info",
+					"images":[]
+					},
+					{"name":"Creating a Presence",
+					"photo":"../website 2.0/img/interactive-design-storefront-eyes.jpg",
+					"info": "Project Info",
+					"images":[]
+					}
+				],
+				"websites":[
+					{"name":"Ashtaev 1.0",
+					"photo": "../website 2.0/img/identity2.jpg",
+					"info": null,
+					"link": null,
+					}
+				]
+			}
+
+		var projectCount = workObj.projects.length
+		// console.log(workObj.projects[0].name) -> The Inquisitive Identity
+
+		//create gallery slides
+		for (i = 1; i <= projectCount; i++ ) {
+
+			var projectImage = workObj.projects[i-1].photo;
+			var $slideDiv = $('<div/>')
+                 .addClass('gallery-slide')
+                 .css('background-image', 'url("'+projectImage+'")');
+
+            $('.gallery').append($slideDiv);
+            $($slideDiv).append('<div>'+workObj.projects[i-1].name+'</div>');
+			$($slideDiv).children().addClass('gallery-caption')
+
+		}
+
+		//intro slide click - make nav and gallery visible
+		$('.intro').click(function() {
+
+			$("nav").removeClass('invisible');
+			$(this).toggleClass('invisible');
+			$('.gallery').slick('slickPlay');
+
+		})
+
+		//initialize gallery slider
+		$(document).ready(function(){
+			$('.gallery').slick({
+
+				autoplay:true,
+				arrows:false,
+				pauseOnHover:false
+
+			});
+		});
+
+		//remove class active on the wrapper's children and attach it to clicked child
+		function toggleEl(elClass) { 
+		    $('.wrapper').children().removeClass('active');
+		    $(elClass).toggleClass('active');
+		}
+
+		function pauseSlides() {
+
+			$('.gallery').slick('slickPause');
+			console.log('Paused slides.')
+
+		}
+
+
+
+		// top nav buttons
+
+		$('.about-button').click(function(){
+			$('.about').toggleClass('info-on');
+			$('.wrapper').children().not('.about').removeClass('info-on');
+			$('.nav').children().not(this).removeClass('active-link');
+			$(this).toggleClass('active-link');
+
+			pauseSlides() //pause slides when information is active
+		});
+
+		$('.work-button').click(function(){
+			$('.work').toggleClass('info-on');
+			// $('.about').removeClass('info-on');
+			// setTimeOut( function() {$('.wrapper').children().not('.work').removeClass('info-on');}, 100);
+			$('.wrapper').children().not('.work').removeClass('info-on');
+			$('.nav').children().not(this).removeClass('active-link');
+			$(this).toggleClass('active-link');
+		});
+
+		$('.archive-button').click(function(){
+			$('.archive').toggleClass('info-on');
+			$('.wrapper').children().not('.archive').removeClass('info-on');
+			$('.nav').children().not(this).removeClass('active-link');
+			$(this).toggleClass('active-link');
+		});
+
+	</script>
+
+</body>
+
+</html>
